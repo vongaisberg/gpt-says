@@ -82,7 +82,7 @@ def tweet():
                 print(r.response)
             
             json.dump(completed_trends, open("completed_trends.txt", 'w'))
-            exit()
+            return
 
 while True:
     tweet()
