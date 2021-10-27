@@ -35,7 +35,7 @@ def tweet():
             continue
 
         tweets = api.request(
-            'search/tweets', {'q': trend['name'], 'lang': 'en', 'result_type': 'popular', 'count': 100})
+            'search/tweets', {'q': trend['name'], 'lang': 'en', 'result_type': 'mixed', 'count': 100})
 
         good_tweets = []
 
@@ -63,8 +63,8 @@ def tweet():
                 max_tokens=140,
                 top_p=1,
                 best_of=5,
-                frequency_penalty=0.1,
-                presence_penalty=0.1,
+                frequency_penalty=0,
+                presence_penalty=0,
                 stop=["#####"]
             )
             generated_tweet = response['choices'][0]['text']
