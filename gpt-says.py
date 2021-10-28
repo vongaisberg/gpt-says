@@ -92,4 +92,4 @@ def tweet():
 
 while True:
     tweet()
-    time.sleep(10*60)
+    time.sleep(20*60)
