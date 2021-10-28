@@ -46,6 +46,10 @@ def tweet():
 
                 good_tweets.append(tweet['text'])
         print(good_tweets.__len__())
+        if (good_tweets.__len__() > 15):
+            #To many good tweets, incidation of spam. Also very expensive on the model
+            print('Too many good tweets, skip') 
+            continue
         if (good_tweets.__len__() > 5):
             print("## GOOD TREND")
             prompt = ''
@@ -54,7 +58,9 @@ def tweet():
                 # print(good_tweet)
                 # print("#####")
                 prompt = prompt + good_tweet+"\n#####\n"
-
+            if (prompt.__len__() > 1000):
+                print('Prompt is too long, skip.')
+                continue
             print("#### PROMPT: ", prompt)
             response = openai.Completion.create(
                 engine="davinci",
