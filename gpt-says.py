@@ -58,7 +58,7 @@ def tweet():
                 # print(good_tweet)
                 # print("#####")
                 prompt = prompt + good_tweet+"\n#####\n"
-            if (prompt.__len__() > 1000):
+            if (prompt.__len__() > 2000):
                 print('Prompt is too long, skip.')
                 continue
             print("#### PROMPT: ", prompt)
