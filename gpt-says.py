@@ -66,7 +66,7 @@ def tweet():
                 engine="davinci",
                 prompt=prompt,
                 temperature=0.7,
-                max_tokens=140,
+                max_tokens=70,
                 top_p=1,
                 best_of=5,
                 frequency_penalty=0,
