@@ -20,18 +20,24 @@ api = TwitterAPI(config['CLIENT_IDENTIFIER'],
 
 openai.api_key = config['OPENAI_API_KEY']
 
+blacklist = ['vs', 'Falcons', 'Eagles', 'Cowboys', 'Bills', 'Packers', 'Jags', 'Broncos', 'Ravens', 'Vikings', 'Giants', 'Saints']
+
 def tweet():
     trends = api.request('trends/place', {'id': 23424977})
     i = 0
     for trend in trends:
 
-        if (i > 10):
+        if (i > 5):
             break
         i = i+1
         print('### TREND: ', trend['name'], trend['tweet_volume'])
 
         if (trend['name'] in completed_trends):
             print("SKIP")
+            continue
+
+        if (trend['name'] in blacklist):
+            print("Probably Sport. SKIP")
             continue
 
         tweets = api.request(
